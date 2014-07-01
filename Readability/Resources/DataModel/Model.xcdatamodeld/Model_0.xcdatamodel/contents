@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Attachment" representedClassName="YTAttachment" parentEntity="EntityBase" syncable="YES">
+        <attribute name="filename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="orientation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="uniqueIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="mini_preview" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AttachmentMiniPreview" inverseName="attachment" inverseEntity="AttachmentMiniPreview" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="attachments" inverseEntity="Note" syncable="YES"/>
+        <relationship name="originalData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AttachmentOriginalData" inverseName="attachment" inverseEntity="AttachmentOriginalData" syncable="YES"/>
+        <relationship name="preview" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AttachmentPreview" inverseName="attachment" inverseEntity="AttachmentPreview" syncable="YES"/>
+    </entity>
+    <entity name="AttachmentMiniPreview" representedClassName="YTAttachmentMiniPreview" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" storedInTruthFile="YES" syncable="YES"/>
+        <relationship name="attachment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Attachment" inverseName="mini_preview" inverseEntity="Attachment" syncable="YES"/>
+    </entity>
+    <entity name="AttachmentOriginalData" representedClassName="YTAttachmentOriginalData" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" storedInTruthFile="YES" syncable="YES"/>
+        <relationship name="attachment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Attachment" inverseName="originalData" inverseEntity="Attachment" syncable="YES"/>
+    </entity>
+    <entity name="AttachmentPreview" representedClassName="YTAttachmentPreview" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" storedInTruthFile="YES" syncable="YES"/>
+        <relationship name="attachment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Attachment" inverseName="preview" inverseEntity="Attachment" syncable="YES"/>
+    </entity>
+    <entity name="EntityBase" representedClassName="YTEntityBase" isAbstract="YES" syncable="YES">
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdDateTimezone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedDateTimezone" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="YTLocation" parentEntity="EntityBase" syncable="YES">
+        <attribute name="admArea" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="foursquareId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="locality" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="placeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="location" inverseEntity="Note" syncable="YES"/>
+    </entity>
+    <entity name="Note" representedClassName="YTNote" parentEntity="EntityBase" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attachments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Attachment" inverseName="note" inverseEntity="Attachment" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="note" inverseEntity="Location" syncable="YES"/>
+        <relationship name="notebook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notebook" inverseName="notes" inverseEntity="Notebook" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="notes" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather" inverseName="note" inverseEntity="Weather" syncable="YES"/>
+    </entity>
+    <entity name="Notebook" representedClassName="YTNotebook" parentEntity="EntityBase" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="notebook" inverseEntity="Note" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="YTTag" parentEntity="EntityBase" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="tags" inverseEntity="Note" syncable="YES"/>
+    </entity>
+    <entity name="Weather" representedClassName="YTWeather" parentEntity="EntityBase" syncable="YES">
+        <attribute name="pressure" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="relativeHumidity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sunriseDate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sunriseDateTimezone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sunsateDateTimezone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sunsetDate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="tempCelsius" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="tempFahrenheit" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="uniqueIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="visibilityDistance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="weatherDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weatherType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="windBearing" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="windChillCelsius" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="weather" inverseEntity="Note" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Attachment" positionX="-452" positionY="-181" width="128" height="193"/>
+        <element name="AttachmentMiniPreview" positionX="-387" positionY="-81" width="128" height="73"/>
+        <element name="AttachmentOriginalData" positionX="-605" positionY="-207" width="128" height="73"/>
+        <element name="AttachmentPreview" positionX="-396" positionY="-90" width="128" height="75"/>
+        <element name="EntityBase" positionX="-153" positionY="266" width="128" height="103"/>
+        <element name="Location" positionX="-155" positionY="-243" width="128" height="193"/>
+        <element name="Note" positionX="-144" positionY="18" width="128" height="178"/>
+        <element name="Notebook" positionX="214" positionY="216" width="128" height="103"/>
+        <element name="Tag" positionX="-414" positionY="108" width="128" height="73"/>
+        <element name="Weather" positionX="72" positionY="-189" width="128" height="283"/>
+    </elements>
+</model>

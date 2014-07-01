@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>51810AB1-E76F-449B-89BF-33F85099C0CE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Readability</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>A5A59897-2EF1-4A34-A170-BACEABFED322</key>
+		<string>https://bitbucket.org/Notes/ios-move-to-core-data.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SourceCode/Readability.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>A5A59897-2EF1-4A34-A170-BACEABFED322</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/Notes/ios-move-to-core-data.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>A5A59897-2EF1-4A34-A170-BACEABFED322</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A5A59897-2EF1-4A34-A170-BACEABFED322</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Repo</string>
+		</dict>
+	</array>
+</dict>
+</plist>
